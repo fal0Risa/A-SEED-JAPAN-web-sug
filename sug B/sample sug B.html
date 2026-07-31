@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>案B：トラスト＆データ型 | A SEED JAPAN</title>
+  <style>
+    :root {
+      --navy: #1b2a4a;
+      --gold: #d4af37;
+      --gray: #f4f6f9;
+      --text: #333;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Georgia", serif, sans-serif; color: var(--text); background: #fff; line-height: 1.8; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    header { border-bottom: 1px solid #ddd; padding: 20px 0; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-size: 1.5rem; font-weight: bold; color: var(--navy); letter-spacing: 1px; }
+
+    /* データハイライト */
+    .hero-data { background: var(--navy); color: #fff; padding: 60px 0; text-align: center; }
+    .hero-data h2 { font-size: 2rem; margin-bottom: 40px; }
+    .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .data-box { background: rgba(255,255,255,0.05); padding: 30px; border-top: 3px solid var(--gold); }
+    .num { font-size: 2.8rem; font-weight: bold; color: var(--gold); }
+
+    /* プレスリリース一覧（テーブル型で公式感） */
+    .section-title { font-size: 1.5rem; color: var(--navy); margin: 50px 0 20px; border-bottom: 2px solid var(--navy); padding-bottom: 10px; }
+    .press-table { width: 100%; border-collapse: collapse; }
+    .press-table td { padding: 15px 10px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+    .press-date { color: #888; width: 120px; }
+
+    footer { background: #111; color: #888; padding: 40px 0; font-size: 0.85rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="brand">国際環境NGO A SEED JAPAN</div>
+      <div><a href="#" style="color:var(--navy); font-weight:bold; text-decoration:none;">年次報告書・会計方針 →</a></div>
+    </div>
+  </header>
+
+  <section class="hero-data">
+    <div class="container">
+      <h2>事実と分析に基づき、金融と社会を変革する</h2>
+      <div class="data-grid">
+        <div class="data-box">
+          <div class="num">30+</div>
+          <div>年の活動実績と独立性</div>
+        </div>
+        <div class="data-box">
+          <div class="num">16社</div>
+          <div>大手運用会社へのエンゲージメント</div>
+        </div>
+        <div class="data-box">
+          <div class="num">100%</div>
+          <div>市民主体の独立会計</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <h3 class="section-title">公式発表・プレスリリース</h3>
+    <table class="press-table">
+      <tr>
+        <td class="press-date">2026.06.24</td>
+        <td>【調査報告】第3回 日本の資産運用会社16社の気候変動エンゲージメント評価結果について</td>
+      </tr>
+      <tr>
+        <td class="press-date">2025.09.27</td>
+        <td>【共同声明】年金積立金管理運用独立行政法人（GPIF）に対する気候変動政策提言</td>
+      </tr>
+      <tr>
+        <td class="press-date">2025.04.15</td>
+        <td>【メディア掲載】○○新聞にて「若者の金融意識とESG投資」に関するインタビューが掲載</td>
+      </tr>
+    </table>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 International Environmental NGO A SEED JAPAN. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
