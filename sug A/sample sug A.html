@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>案A：ビジュアル＆参加型 | A SEED JAPAN</title>
+  <style>
+    :root {
+      --accent: #20c997;
+      --orange: #ff922b;
+      --dark: #212529;
+      --bg: #f8f9fa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; color: var(--dark); background: var(--bg); line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    /* 浮遊ヘッダー */
+    header { background: #fff; padding: 15px 0; border-bottom: 2px solid var(--accent); position: sticky; top: 0; z-index: 10; }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.4rem; font-weight: bold; color: var(--dark); }
+    .btn-action { background: var(--orange); color: #fff; padding: 10px 24px; border-radius: 30px; font-weight: bold; text-decoration: none; }
+
+    /* ビジュアルヒーロー */
+    .hero { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80') center/cover; color: #fff; padding: 100px 20px; text-align: center; border-radius: 0 0 30px 30px; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 25px; }
+
+    /* カード型アクティビティ */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 50px 0; }
+    .card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+    .card-img { height: 180px; background: #e9ecef; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .card-body { padding: 25px; }
+    .card-tag { background: #e6fcf5; color: var(--accent); padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
+    .card-title { font-size: 1.2rem; margin: 10px 0; }
+
+    footer { background: var(--dark); color: #fff; padding: 40px 0; text-align: center; margin-top: 60px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">🌱 A SEED JAPAN</div>
+      <a href="#" class="btn-action">今すぐ参加する</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>未来を変える、アクションを起こそう。</h1>
+    <p>青年の力で環境問題と金融の仕組みに挑む若者参加型NGO</p>
+    <a href="#" class="btn-action" style="background:var(--accent);">イベント一覧を見る</a>
+  </section>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <div class="card-img" style="background: #e3faf3;">📈</div>
+        <div class="card-body">
+          <span class="card-tag">ESGプロジェクト</span>
+          <h3 class="card-title">お金の流れから地球を守る「ESGウォッチ」</h3>
+          <p>年金や銀行の投資先を調査し、環境に優しいお金の使い方を企業に提言します。</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background: #fff4e6;">⚡</div>
+        <div class="card-body">
+          <span class="card-tag">エネルギー</span>
+          <h3 class="card-title">自然エネルギーを選ぶ「パワーシフト」</h3>
+          <p>持続可能な電力選択を個人や自治体に広げるムーブメントを起こしています。</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background: #edf2ff;">🤝</div>
+        <div class="card-body">
+          <span class="card-tag">ボランティア</span>
+          <h3 class="card-title">ミーティング・勉強会に参加する</h3>
+          <p>同世代の仲間と環境課題について学び、社会へ発信するスキルを身につけます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 A SEED JAPAN. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
