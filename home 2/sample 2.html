@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A SEED JAPAN | 新提案UI</title>
+  
+  <style>
+    /* --------------------------------------------------------------------------
+       1. デザインシステム (モダン・アクセシブル・クリーン)
+       -------------------------------------------------------------------------- */
+    :root {
+      --brand-green: #10b981;    /* 持続可能性を象徴するエメラルドグリーン */
+      --brand-orange: #f97316;   /* アクション・情熱を表す明るいオレンジ */
+      --brand-dark: #0f172a;     /* 視認性の高いスレートブラック */
+      --bg-surface: #ffffff;
+      --bg-muted: #f8fafc;
+      --text-main: #334155;
+      --text-muted: #64748b;
+      --radius: 16px;            /* モダンな丸み */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 30px -5px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-muted);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* --------------------------------------------------------------------------
+       2. フローティング・ガラスモフィズム・ヘッダー
+       - スクロールしても常に上部に浮遊し、邪魔にならず操作可能
+       -------------------------------------------------------------------------- */
+    .header {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      margin-bottom: 32px;
+    }
+    .header-inner {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px); /* すりガラス効果 */
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: var(--shadow-sm);
+      border-radius: 99px;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--brand-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-badge {
+      background: var(--brand-green);
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--brand-orange); }
+    
+    .btn {
+      padding: 10px 20px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary {
+      background: var(--brand-orange);
+      color: white;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.45);
+    }
+
+    /* --------------------------------------------------------------------------
+       3. ヒーローセクション (インパクト・ストーリー視点)
+       -------------------------------------------------------------------------- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 40px 0 80px;
+    }
+    .hero-tag {
+      color: var(--brand-green);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: 2.75rem;
+      font-weight: 900;
+      color: var(--brand-dark);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+    }
+    .hero-card-preview {
+      background: var(--bg-surface);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    /* --------------------------------------------------------------------------
+       4. インパクト・数字セクション (信頼性の構築)
+       -------------------------------------------------------------------------- */
+    .stats-bar {
+      background: var(--brand-dark);
+      color: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--brand-green);
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    /* --------------------------------------------------------------------------
+       5. 3大アクション（目的別カード）
+       - 「自分に何ができるか」を迷わせないUI
+       -------------------------------------------------------------------------- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--brand-dark);
+    }
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .action-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .action-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .action-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .action-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: var(--brand-dark);
+    }
+    .action-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    /* --------------------------------------------------------------------------
+       6. タブ切り替え型 ニュース & プロジェクト
+       - スクロール枠を完全に廃止し、タブで表示を整理
+       -------------------------------------------------------------------------- */
+    .content-tabs-section {
+      background: var(--bg-surface);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 80px;
+    }
+    .tab-header {
+      display: flex;
+      gap: 16px;
+      border-bottom: 2px solid var(--bg-muted);
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      padding: 12px 24px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+    }
+    .tab-btn.active {
+      color: var(--brand-orange);
+    }
+    .tab-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--brand-orange);
+    }
+    
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .news-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--bg-muted);
+    }
+    .news-meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .tag-press { background: #e0f2fe; color: #0369a1; }
+    .tag-event { background: #fef3c7; color: #b45309; }
+
+    /* --------------------------------------------------------------------------
+       7. フッター
+       -------------------------------------------------------------------------- */
+    .footer {
+      background: var(--brand-dark);
+      color: #94a3b8;
+      padding: 60px 0 30px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-brand { color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+
+    /* レスポンシブ対応 (スマホ) */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-buttons { justify-content: center; }
+      .stats-bar { grid-template-columns: 1fr; gap: 24px; }
+      .action-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 1. フローティングヘッダー -->
+    <header class="header">
+      <div class="header-inner">
+        <a href="#" class="logo">
+          🌱 A SEED JAPAN
+          <span class="logo-badge">NGO</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#about">私たちについて</a>
+          <a href="#action">参加・活動</a>
+          <a href="#news">最新情報</a>
+        </nav>
+        <button class="btn btn-primary">寄付で応援する</button>
+      </div>
+    </header>
+
+    <!-- 2. ヒーローセクション (ストーリー重視) -->
+    <section class="hero" id="about">
+      <div>
+        <div class="hero-tag">青年の力で未来を変える</div>
+        <h1 class="hero-title">持続可能で公正な社会を、次世代の手で。</h1>
+        <p class="hero-desc">
+          A SEED JAPANは、気候変動対策やESG投資の推進など、構造的な環境・社会課題の解決に取り組む国際環境NGOです。
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary">活動に参加する</button>
+          <button class="btn" style="background:var(--bg-surface); border:1px solid #cbd5e1;">資料を請求する</button>
+        </div>
+      </div>
+      <div class="hero-card-preview">
+        <h3 style="margin-bottom:12px; color:var(--brand-dark);">ピックアップ活動</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:16px;">
+          【ESGウォッチ】年金の運用や金融機関の資金が気候変動に与える影響を追跡し、公正な投資へのシフトを求めています。
+        </p>
+        <a href="#" style="color:var(--brand-green); font-weight:700; font-size:0.9rem;">詳しく読む →</a>
+      </div>
+    </section>
+
+    <!-- 3. インパクト・数字セクション (信頼性の可視化) -->
+    <section class="stats-bar">
+      <div>
+        <div class="stat-number">30+ 年</div>
+        <div class="stat-label">設立からの活動実績</div>
+      </div>
+      <div>
+        <div class="stat-number">16 社</div>
+        <div class="stat-label">大手金融機関へのESGエンゲージメント調査</div>
+      </div>
+      <div>
+        <div class="stat-number">1,000+ 人</div>
+        <div class="stat-label">年間イベント参加・ボランティア数</div>
+      </div>
+    </section>
+
+    <!-- 4. 目的別アクション（3つのアプローチ） -->
+    <section id="action" style="margin-bottom: 80px;">
+      <div class="section-header">
+        <h2 class="section-title">あなたに合わせた関わり方</h2>
+        <p style="color:var(--text-muted);">社会を変えるアクションに、誰でも参加できます。</p>
+      </div>
+
+      <div class="action-grid">
+        <div class="action-card">
+          <div>
+            <div class="action-icon">💚</div>
+            <h3>寄付・サポーター</h3>
+            <p>月々500円からの継続的な支援で、独立した市民NGOとしての活動を支えます。</p>
+          </div>
+          <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center;">サポーターになる</a>
+        </div>
+
+        <div class="action-card">
+          <div>
+            <div class="action-icon">🙋‍♂️</div>
+            <h3>ボランティア参加</h3>
+            <p>ワークショップ運営や調査活動など、青年の視点で直接プロジェクトに関われます。</p>
+          </div>
+          <a href="#" class="btn" style="background:var(--brand-dark); color:white; width: 100%; justify-content: center;">参加方法を見る</a>
+        </div>
+
+        <div class="action-card">
+          <div>
+            <div class="action-icon">📢</div>
+            <h3>署名・拡散する</h3>
+            <p>気候危機の回避に向けたオンライン署名やSNSでの情報拡散にご協力ください。</p>
+          </div>
+          <a href="#" class="btn" style="background:var(--bg-muted); width: 100%; justify-content: center;">最新の署名を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. タブ型コンテンツ（新着情報 / プロジェクトの整理） -->
+    <section id="news" class="content-tabs-section">
+      <div class="tab-header">
+        <button class="tab-btn active" onclick="switchTab('news')">新着情報・プレスリリース</button>
+        <button class="tab-btn" onclick="switchTab('projects')">主要プロジェクト一覧</button>
+      </div>
+
+      <!-- タブ1: ニュース -->
+      <div id="tab-news" class="tab-content active">
+        <div class="news-row">
+          <div class="news-meta">
+            <span class="tag tag-press">プレスリリース</span>
+            <span style="color:var(--text-muted); font-size:0.85rem;">2026.06.24</span>
+            <a href="#" style="font-weight:600;">第3回 日本の資産運用会社16社の気候変動エンゲージメント調査結果を発表</a>
+          </div>
+          <span style="color:var(--text-muted);">→</span>
+        </div>
+        <div class="news-row">
+          <div class="news-meta">
+            <span class="tag tag-event">イベント</span>
+            <span style="color:var(--text-muted); font-size:0.85rem;">2025.09.13</span>
+            <a href="#" style="font-weight:600;">オンラインセミナー「お金の流れで未来を変えるESG」開催</a>
+          </div>
+          <span style="color:var(--text-muted);">→</span>
+        </div>
+      </div>
+
+      <!-- タブ2: プロジェクト -->
+      <div id="tab-projects" class="tab-content">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+            <h4 style="color:var(--brand-green);">ESGウォッチ</h4>
+            <p style="font-size:0.9rem; color:var(--text-muted);">金融機関へのエンゲージメントを通じて環境・社会問題の解決を促します。</p>
+          </div>
+          <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+            <h4 style="color:var(--brand-green);">パワーシフト</h4>
+            <p style="font-size:0.9rem; color:var(--text-muted);">持続可能な自然エネルギーの選択を社会全体に広げる取り組みです。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 6. フッター -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">🌱 A SEED JAPAN</div>
+        <p style="font-size:0.9rem;">国際環境NGO A SEED JAPAN<br>持続可能で公正な社会を目指す青年の団体です。</p>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom:12px;">ナビゲーション</h4>
+        <ul style="list-style:none; line-height:2;">
+          <li><a href="#">団体概要</a></li>
+          <li><a href="#">活動内容</a></li>
+          <li><a href="#">年次報告書・会計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom:12px;">お問い合わせ</h4>
+        <ul style="list-style:none; line-height:2;">
+          <li><a href="#">よくある質問</a></li>
+          <li><a href="#">取材・講演依頼</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- タブ制御スクリプト -->
+  <script>
+    function switchTab(tabName) {
+      // 全タブコンテンツを非表示
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      // 全タブボタンのアクティブ解除
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+      // 選択したタブのみ表示
+      document.getElementById('tab-' + tabName).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
+
+<!--従来の「日本のNGOやNPOサイトに多いニュース盛りだくさんの古いポータル型」を完全に脱却し、現代の最新Webデザインのトレンド（SaaSやグローバルNGOのようなストーリーテリング型・カードベース構成）を取り入れた新しい構成案をご提案します。
+
+💡 新しいUI/UX構成のコンセプト：「ストーリー型 1ページ完結＋アクション誘導」
+従来のWebサイトは「情報が横並び・乱立していて、どこを見たらいいか迷う」状態でした。
+新しい提案ではユーザーの心理的動線に沿って上から下へ流れるように配置します。
+
+情報動線（ストーリー）の設計
+ヒーロー（インパクト）: 「誰が・何を解決する団体か」を3秒で理解させる
+
+実績とインパクト（数字）: 会員数や解決実績を数字で見せ、信頼（Social Proof）を獲得する
+
+活動（3大ピラー）: 複雑な活動をカード型で直感的に見せる
+
+アクション（コンバージョン）: 「寄付する」「参加する」「イベントを見る」を視覚的に分ける
+
+最新情報・透明性: 信頼を深めるプレスリリースや決算・活動報告
+
+🎨 全画面カード＆現代的なUI（HTML + CSS + JS 一体型）
+以下のコードは、カード型グリッド・レスポンシブ・インタラクティブなUIを組み込んだ全く新しい構成です。そのまま .html ファイルとして保存して動作を確認できます。-->
+
+
+<!--🔍 今回提案した構成の主なメリット
+すりガラス風フッター・ヘッダー（Glassmorphism）
+
+ヘッダーが常に画面上部に浮遊しているため、スクロールしても「寄付」「参加」などのアクションボタンを見失いません。
+
+ストーリーに沿った階層構造
+
+「どんな団体か」→「信頼できるか（数字）」→「何をしているか」→「自分はどう関われるか」という順番で情報が展開するため、離脱率を下げることができます。
+
+タブ切り替え構造（コンテンツ整理）
+
+雑多になりがちな「ニュース」「プロジェクト」をタブに切り替えることで、画面を省スペース化しつつ整理された印象を与えます。
+
+レスポンシブファースト
+
+モバイル画面で開いた際も横スクロールやレイアウト崩れが起こらず、指で押しやすい大きなボタン設計になっています。-->
